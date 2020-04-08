@@ -11,7 +11,7 @@ namespace BlabberApp.DataStore
     {
 
         //private List<BaseDatum> _items;
-        private ApplicationContext context;
+        //private ApplicationContext context;
 
         //replaces List, to use entity framework
         private DbSet<T> _entities;
@@ -23,12 +23,12 @@ namespace BlabberApp.DataStore
             }
         }
 
-        public InMemory(ApplicationContext ContextIn)
-        {
-            //this._items = new List<BaseDatum>();
-            context = ContextIn;
-            this._entities = context.Set<T>();
-        }
+        // public InMemory(ApplicationContext ContextIn)
+        // {
+        //     //this._items = new List<BaseDatum>();
+        //     context = ContextIn;
+        //     this._entities = context.Set<T>();
+        // }
 
         public T Add(T item)
         {
@@ -71,7 +71,7 @@ namespace BlabberApp.DataStore
             {
                 throw new ArgumentNullException("item to update null");
             }
-            context.SaveChanges();
+            //context.SaveChanges();
         }
 
         // public bool Create(IDatum datum)
