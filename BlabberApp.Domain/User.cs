@@ -6,9 +6,20 @@ namespace BlabberApp.Domain
 {
     public class User : BaseDatum
     {
+        public Guid Id{get; set;}
         public DateTime RegisterDTTM{get; set;}
         public DateTime LastLoginDTTM{get; set;}
         public string Email {get; private set;}
+        
+        public User()
+        {
+            this.Id = Guid.NewGuid();
+        }
+        public User(string email)
+        {
+            this.Id = Guid.NewGuid();
+            this.ChangeEmail(email);
+        }
 
         public void ChangeEmail(string email)
         {

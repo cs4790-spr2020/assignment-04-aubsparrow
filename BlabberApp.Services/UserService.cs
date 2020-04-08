@@ -14,7 +14,7 @@ namespace BlabberApp.Services
             userAdapter = adapter;
         }
 
-        public IEnumerable GetAll()
+        public IEnumerable GetAllUsers()
         {
             return userAdapter.GetAll();
         }
