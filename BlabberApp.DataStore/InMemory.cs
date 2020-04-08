@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BlabberApp.DataStore
 {
-    public class InMemory : IBlabPlugin, IUserPlugin
+    public class InMemory : IBlabPlugin, IPlugin
     {
         private ArrayList lstBuffer;
         public InMemory()

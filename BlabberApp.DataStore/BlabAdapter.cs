@@ -18,25 +18,14 @@ namespace BlabberApp.DataStore
            blabPlugin.Create(blab);
        }
 
-       public void Remove(Blab blab)
-       {
-           blabPlugin.Delete(blab);
-       }
-
-       public void Update(Blab blab)
-       {
-           this.blabPlugin.Update(blab);
-       }
+    
 
        public IEnumerable GetAll()
        {
            return this.blabPlugin.ReadAll();
        }
 
-       public Blab GetById(Guid Id)
-       {
-           return (Blab)blabPlugin.ReadById(Id);
-       }
+      
        public IEnumerable GetByUserId(string email)
        {
            return blabPlugin.ReadByUserId(email);

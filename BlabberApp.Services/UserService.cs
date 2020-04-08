@@ -36,10 +36,6 @@ namespace BlabberApp.Services
         {
             return new User(email);
         }
-
-        public User GetUser(string email)
-        {
-            return userAdapter.GetByEmail(email);
-        } 
+ 
     }
 }

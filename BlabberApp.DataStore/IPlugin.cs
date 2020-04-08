@@ -8,8 +8,5 @@ namespace BlabberApp.DataStore
     {
         void Create(IDatum obj);
         IEnumerable ReadAll();
-        IDatum ReadById(Guid Id);
-        void Update(IDatum obj);
-        void Delete(IDatum obj);
     }
 }
