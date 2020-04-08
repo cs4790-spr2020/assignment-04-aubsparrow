@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using BlabberApp.Services;
+using BlabberApp.DataStore;
 
 namespace BlabberApp.Client
 {
@@ -23,6 +25,12 @@ namespace BlabberApp.Client
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            UserFactory userFactory = new UserFactory();
+            IPlugin userPlugin = userFactory.CreateUserPlugin("mysql");
+            UserAdapter userAdapter = userFactory.CreateUserAdapter(userPlugin);
+            UserService userService = userFactory.CreateUserService(userAdapter);
+
+            services.AddSingleton<IUserService>(s => userService);
             services.AddRazorPages();
         }
 

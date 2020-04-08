@@ -19,6 +19,10 @@ namespace BlabberApp.Domain
         {
             this.Id = Guid.NewGuid();
             this.ChangeEmail(email);
+            this.RegisterDTTM = DateTime.Now;
+            this.LastLoginDTTM = DateTime.Now;
+            
+
         }
 
         public void ChangeEmail(string email)

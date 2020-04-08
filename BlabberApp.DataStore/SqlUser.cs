@@ -35,7 +35,7 @@ namespace BlabberApp.DataStore
             try
             {
                 DateTime now = DateTime.Now;
-                string sql = "INSERT INTO User (SysID, Email, RegistrationDTTM, LastLoginDTTM) VALUES ('"
+                string sql = "INSERT INTO Users (SysID, Email, RegistrationDTTM, LastLoginDTTM) VALUES ('"
                      + user.Id + "', '"
                      + user.Email + "', '"
                      + now.ToString("yyyy-MM-dd HH:mm:ss")
