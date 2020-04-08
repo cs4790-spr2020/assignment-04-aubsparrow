@@ -11,7 +11,7 @@ namespace BlabberApp.DataStoreTest
     [TestClass]
     public class InMemoryTest
     {
-        private InMemory<Blab> harness;
+        //private InMemory<Blab> harness;
         public InMemoryTest()
         {
             // var options = new DbContextOptionsBuilder<ApplicationContext>().UseInMemoryDatabase(databaseName: "addBlabs").Options;

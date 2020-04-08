@@ -7,103 +7,71 @@ using System.Linq;
 
 namespace BlabberApp.DataStore
 {
-    public class InMemory<T> : IRepository<T> where T : BaseDatum
+    public class InMemory : IBlabPlugin, IUserPlugin
     {
-
-        //private List<BaseDatum> _items;
-        //private ApplicationContext context;
-
-        //replaces List, to use entity framework
-        private DbSet<T> _entities;
-        public DbSet<T> Entities
+        private ArrayList lstBuffer;
+        public InMemory()
         {
-            get
+            lstBuffer = new ArrayList();
+        }
+
+        public void Create(IDatum obj)
+        {
+            lstBuffer.Add(obj);
+        }
+
+        public IEnumerable ReadAll()
+        {
+            return lstBuffer;
+        }
+
+        public IDatum ReadById(Guid Id)
+        {
+            foreach(IDatum obj in lstBuffer)
             {
-                return this._entities;
+                if(Id.Equals(obj.getSysId()))
+                {
+                    return obj;
+                }
             }
+            return null;
         }
 
-        // public InMemory(ApplicationContext ContextIn)
-        // {
-        //     //this._items = new List<BaseDatum>();
-        //     context = ContextIn;
-        //     this._entities = context.Set<T>();
-        // }
-
-        public T Add(T item)
+        public IDatum ReadByEmail(string email)
         {
-            this._entities.Add(item);
-            return item;
-        }
-
-        public void Delete(T item)
-        {
-            this._entities.Remove(item);
-            return;
-        }
-
-        public T GetByID(string sysId)
-        {
-            if(sysId == "")
+            foreach(User user in lstBuffer)
             {
-                throw new ArgumentNullException("sysId null");    
+                if(user.Email.Equals(email))
+                {
+                    return user;
+                }
             }
-            return this._entities.SingleOrDefault(s => s.getSysId() == sysId);
+            return null;
         }
 
-        public T GetByUserID(string userId)
+        public IEnumerable ReadByUserId(string Id)
         {
-            if(userId == "")
+            ArrayList userBlabs = new ArrayList();
+            foreach(Blab blab in lstBuffer)
             {
-                throw new ArgumentNullException("user id null");
+                if(blab.user.Email.Equals(Id))
+                {
+                    userBlabs.Add(blab);
+                }
             }
-            return this._entities.Find(userId);
+            return userBlabs;
         }
 
-        public IEnumerable<T> GetAll()
+        public void Update(IDatum obj)
         {
-            return this._entities.AsEnumerable();
+            this.Delete(obj);
+            this.Create(obj);
         }
 
-        public void Update (T item)
+        public void Delete(IDatum obj)
         {
-            if(item == null)
-            {
-                throw new ArgumentNullException("item to update null");
-            }
-            //context.SaveChanges();
+            lstBuffer.Remove(obj);
         }
-
-        // public bool Create(IDatum datum)
-        // {
-        //     int idx = this._items.Add(datum);
-        //     if(idx < 0)
-        //     {
-        //         throw new ArgumentOutOfRangeException("OH HELL NO");
-        //     }
-        //     return true;
-        // }
-
-        // public IDatum Read(int index)
-        // {
-        //     return (IDatum)this._items[index];
-        // }
-
-        // public bool Update(IDatum datum)
-        // {
-        //     return true;
-        // }
-
-        // public bool Delete(int index)
-        // {
-        //     try
-        //     {
-        //         this._items.RemoveAt(index);
-        //     }
-        //     catch(ArgumentOutOfRangeException ex){
-        //         throw ex;
-        //     }
-        //     return true;
-        // }
     }
+    
 }
