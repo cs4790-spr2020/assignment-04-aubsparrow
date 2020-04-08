@@ -75,7 +75,25 @@ namespace BlabberApp.DataStore
             }
         }
  
-       
+        public IDatum GetById(Guid Id)
+        {
+            try
+            {
+                string sqlSelectUser = "SELECT * FROM Users WHERE Users.SysID = '" + Id.ToString() + "'";
+                MySqlDataAdapter adapterUser = new MySqlDataAdapter(sqlSelectUser, connection); 
+                MySqlCommandBuilder commandUser = new MySqlCommandBuilder(adapterUser);
+                DataSet setUsers = new DataSet();
+
+                adapterUser.Fill(setUsers);
+                User retrievedUser = convertRowToUesr(setUsers.Tables[0].Rows[0]);
+
+                return retrievedUser;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }       
 
         private User convertRowToUesr(DataRow row)
         {

@@ -37,6 +37,18 @@ namespace BlabberApp.DataStore
             return null;
         }
 
+         public IDatum GetById(Guid Id)
+        {
+            foreach(IDatum obj in lstBuffer)
+            {
+                if(Id.Equals(obj.getSysId()) && obj is User)
+                {
+                    return obj;
+                }
+            }
+            return null;
+        }
+
         public IDatum ReadByEmail(string email)
         {
             foreach(User user in lstBuffer)

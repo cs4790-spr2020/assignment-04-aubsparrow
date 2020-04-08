@@ -50,7 +50,7 @@ namespace BlabberApp.DataStore
             }
         }
 
-        public IDatum ReadById(Guid Id)
+        public IDatum GetById(Guid Id)
         {
             try
             {

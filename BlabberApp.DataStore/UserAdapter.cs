@@ -23,6 +23,11 @@ namespace BlabberApp.DataStore
             return UserPlugin.ReadAll();
         }
 
+        public User GetById(Guid Id)
+        {
+            return (User)UserPlugin.GetById(Id);
+        }
+
         
 
     }
