@@ -53,7 +53,7 @@ namespace BlabberApp.DataStore
         {
             try
             {
-                string sqlSelectAll = "SELECT * FROM users";
+                string sqlSelectAll = "SELECT * FROM Users";
                 MySqlDataAdapter adapterUser = new MySqlDataAdapter(sqlSelectAll, connection); 
                 MySqlCommandBuilder commandUser = new MySqlCommandBuilder(adapterUser);
                 DataSet setUsers = new DataSet();
