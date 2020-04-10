@@ -12,10 +12,23 @@ namespace BlabberApp.DataStoreTest
     public class InMemoryTest
     {
 
+        private User newUser;
+        private UserAdapter adapterHarness;
+        private readonly string userEmail = "foobar@example.com";
+
+        [TestInitialize]
+        public void Setup()
+        {
+            newUser = new User(userEmail);
+            adapterHarness = new UserAdapter(new InMemory());
+        }
+
         [TestMethod]
         public void TestAddAndGetByID()
         {
-            Assert.AreEqual(true, true);
+            adapterHarness.Add(newUser);
+            User actual = adapterHarness.GetById(newUser.Id);
+            Assert.AreEqual(newUser.Id, actual.Id);
         }
 
     }
