@@ -29,7 +29,7 @@ namespace BlabberApp.DataStore
         {
             foreach(IDatum obj in lstBuffer)
             {
-                if(Id.Equals(obj.getSysId()))
+                if(Id.Equals(obj.Id))
                 {
                     return obj;
                 }
@@ -41,7 +41,7 @@ namespace BlabberApp.DataStore
         {
             foreach(IDatum obj in lstBuffer)
             {
-                if(Id.Equals(obj.getSysId()) && obj is User)
+                if(Id.Equals(obj.Id))
                 {
                     return obj;
                 }

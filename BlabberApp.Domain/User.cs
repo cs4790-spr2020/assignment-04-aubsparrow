@@ -4,7 +4,7 @@ using BlabberApp.Domain;
 
 namespace BlabberApp.Domain
 {
-    public class User : BaseDatum
+    public class User : IDatum
     {
         public Guid Id{get; set;}
         public DateTime RegisterDTTM{get; set;}

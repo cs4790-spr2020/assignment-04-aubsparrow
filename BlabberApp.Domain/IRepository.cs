@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace BlabberApp.Domain
 {
-    public interface IRepository<T> where T : BaseDatum
+    public interface IRepository<T> where T : IDatum
     {
         T Add(T item);
         void Delete(T item);

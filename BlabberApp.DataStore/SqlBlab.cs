@@ -36,7 +36,7 @@ namespace BlabberApp.DataStore
             {
                 DateTime DTTMNow = DateTime.Now;
                 string sql = "INSERT INTO Blab (SysID, Message, CreatedDTTM, UserID) VALUES'"
-                    + blab.getSysId() + "', '" 
+                    + blab.Id + "', '" 
                     + blab.Message + "', '"
                     + DTTMNow.ToString("yyyy-MM-dd HH:mm:ss") + "', '"
                     + blab.user.Email + "')";

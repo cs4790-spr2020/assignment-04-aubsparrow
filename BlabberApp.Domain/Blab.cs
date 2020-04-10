@@ -2,7 +2,7 @@ using System;
 
 namespace BlabberApp.Domain
 {
-    public class Blab : BaseDatum
+    public class Blab : IDatum
     {
        public Guid Id{get; set;}
        public DateTime DateTime{get;}
@@ -21,7 +21,7 @@ namespace BlabberApp.Domain
        {
            this.user = new User();
            this.Message = Message;
-           this.CreatedDTTM = DateTime.Now;
+           this.DateTime = DateTime.Now;
        }
 
        public Blab(User user)
