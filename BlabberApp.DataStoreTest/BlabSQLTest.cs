@@ -32,13 +32,21 @@ namespace BlabberApp.DataStoreTest
         public void TestAddGetById()
         {
             adapter.Add(newBlab);
-            /*
-            adapterHarness.Add(user);
-            User actual = adapterHarness.GetById(user.Id);
-            Assert.AreEqual(user.Id, actual.Id);
-            */
             Blab actual = adapter.GetById(newBlab);
             Assert.AreEqual(newBlab.Id, actual.Id);
+        }
+
+        [TestMethod]
+        public void TestAddAndReadAll()
+        {
+            adapter.Add(newBlab);
+            var BlabList = (ArrayList)adapter.GetAll();
+            foreach(Blab blab in BlabList){
+                if(blab == newBlab)
+                {
+                    Assert.AreEqual(blab.Id, newBlab.Id);
+                }
+            }
         }
     }
 }

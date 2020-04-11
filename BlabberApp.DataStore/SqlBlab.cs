@@ -82,7 +82,7 @@ namespace BlabberApp.DataStore
 
             foreach(DataRow row in BlabSet.Tables[0].Rows)
             {
-                listBlabs.Add(row);
+                listBlabs.Add(convertRowToBlab(row));
             }
             return listBlabs;
         }
