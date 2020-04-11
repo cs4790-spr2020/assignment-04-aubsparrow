@@ -23,12 +23,31 @@ namespace BlabberApp.DataStoreTest
             adapterHarness = new UserAdapter(new InMemory());
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            adapterHarness.Delete(newUser);
+        }
+
         [TestMethod]
         public void TestAddAndGetByID()
         {
             adapterHarness.Add(newUser);
             User actual = adapterHarness.GetById(newUser.Id);
             Assert.AreEqual(newUser.Id, actual.Id);
+        }
+
+        [TestMethod]
+        public void TestGetAll()
+        {
+            adapterHarness.Add(newUser);
+            var list = (ArrayList)adapterHarness.GetAll();
+            foreach(User user in list){
+                if(newUser == user)
+                {
+                    Assert.AreEqual(newUser.Id, user.Id);
+                }
+            }
         }
 
     }
