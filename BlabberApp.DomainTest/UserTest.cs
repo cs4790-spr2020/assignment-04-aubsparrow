@@ -8,15 +8,14 @@ namespace BlabberApp.DomainTest
     public class UserTest
     {
         [TestMethod]
-        public void TestSetEmail_Success()
+        public void TestSetEmailNewUser()
         {
             //arragne
-            User harness = new User();
-            string expected = "foobar@example.com";
-            harness.ChangeEmail("foobar@example.com");
+            string email = "foobar@example.com";
+            User harness = new User(email);
             //act
             string actual = harness.Email;
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(actual, email);
         }
 
         [TestMethod]
