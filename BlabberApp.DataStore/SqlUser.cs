@@ -93,7 +93,24 @@ namespace BlabberApp.DataStore
             {
                 throw new Exception(ex.ToString());
             }
-        }       
+        }  
+
+        public void Delete(IDatum obj)
+        {
+            try
+            {
+                User user = (User)obj;
+                string Id = user.Id.ToString();
+                string DeleteSQL = "DELETE FROM Users WHERE Users.SysID = '" + Id + "'";
+                MySqlCommand DeleteCommand = new MySqlCommand(DeleteSQL, connection);
+                DeleteCommand.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw new Exception(e.ToString());
+            }
+        }     
 
         private User convertRowToUesr(DataRow row)
         {

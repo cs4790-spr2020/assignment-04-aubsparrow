@@ -28,6 +28,11 @@ namespace BlabberApp.DataStore
             return (User)UserPlugin.GetById(Id);
         }
 
+        public void Delete(User user)
+        {
+            UserPlugin.Delete(user);
+        }
+
         
 
     }
